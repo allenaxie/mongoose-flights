@@ -3,9 +3,15 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+// Define routes
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var flightsRouter = require('./routes/flights');
+
+// load the env
+require('dotenv').config();
+
+// Connect to the database with Mongoose
+require('./config/database');
 
 var app = express();
 
@@ -19,8 +25,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Mount routes
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/flights', flightsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
