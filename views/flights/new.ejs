@@ -1,3 +1,5 @@
+<%- include('../partials/header') %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,16 +18,21 @@
             <input type="text" name="airline">
         </label><br>
         <label>Airport:
-            <input type="text" name="airport">
+            <select name="airport">
+                <option value="SFO" selected>SFO</option>
+                <option value="LAX" selected>LAX</option>
+                <option value="SHA" selected>SHA</option>
+                <option value="BKK" selected>BKK</option>
+                <option value="SIN" selected>SIN</option>
+            </select>
         </label><br>
-        <label>Flight No.
+        <label>Flight Number:
             <input type="text" name="flightNo">
         </label><br>
         <label>Departure date:
             <input type="datetime-local" name="departs">
         </label><br>
-
-        <input type="submit" value="Add Movie">
+        <input type="submit" value="Add Flight">
     </form>
 </body>
 

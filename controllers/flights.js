@@ -1,5 +1,8 @@
+const Flight = require('../models/flight');
+
 module.exports = {
     new: newFlight,
+    create,
     index,
 }
 
@@ -7,6 +10,28 @@ function newFlight (req,res) {
     res.render('flights/new');
 }
 
-function index (req,res) {
-    res.redirect('/flights/index');
+function create (req,res) {
+    // Create an in-memory Flight object (not saved in database yet)
+    const flight = new Flight(req.body);
+    // save object in our database
+    flight.save(function (err) {
+        // one way to handle errors
+        if (err) {
+            console.log(err);
+            return res.redirect('/flights/new');
+        }
+        res.redirect('/flights');
+    })
 }
+
+function index (req,res) {
+    Flight.find({}, function(err,flights) {
+        if (err) {
+            console.log(err);
+            return res.redirect('/');
+        }
+        // render page
+        res.render('flights/index',{ flights });
+    })
+}
+
