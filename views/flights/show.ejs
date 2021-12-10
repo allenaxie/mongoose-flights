@@ -1,12 +1,64 @@
 <%- include('../partials/header') %>
 
-<section>
-    <div>Airline:</div>
-    <div><%= flight.airline%></div>
-    <div>Airport:</div>
-    <div><%= flight.airport %></div>
-    <div>Flight No.:</div>
-    <div><%= flight.flightNo %></div>
-    <div>Departs:</div>
-    <div><%= flight.departs %></div>
-</section>
+    <section>
+        <div>Airline:</div>
+        <div>
+            <%= flight.airline%>
+        </div>
+        <div>Airport:</div>
+        <div>
+            <%= flight.airport %>
+        </div>
+        <div>Flight No.:</div>
+        <div>
+            <%= flight.flightNo %>
+        </div>
+        <div>Departs:</div>
+        <div>
+            <%= flight.departs %>
+        </div>
+    </section>
+
+    <h2>Choose Destination</h2>
+    <form id="destination-form" method="POST" action="/flights/<%= flight._id%>/destinations">
+        <label>Airport:</label>
+        <select name="airport">
+            <option value="ICN" selected>ICN</option>
+            <option value="SFO">SFO</option>
+            <option value="KUL">KUL</option>
+            <option value="LAX">LAX</option>
+            <option value="HKG">HKG</option>
+        </select>
+        <label >Arrival:</label>
+        <input name="arrival" type="datetime-local">
+        <input type="submit" value="Choose Destination">
+    </form>
+
+    <% if (flight.destinations.length) { %>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Airport</th>
+                    <th>Arrival</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% flight.destinations.forEach(function(d) { %>
+                    <tr>
+                        <td>
+                            <%= d.createdAt.toLocaleDateString() %>
+                        </td>
+                        <td>
+                            <%= d.airport %>
+                        </td>
+                        <td>
+                            <%= d.arrival %>
+                        </td>
+                    </tr>
+                    <% }); %>
+            </tbody>
+        </table>
+        <% } else { %>
+            <h5>No Destinations Yet</h5>
+            <% } %>

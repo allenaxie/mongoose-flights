@@ -12,6 +12,9 @@ function newFlight (req,res) {
 }
 
 function create (req,res) {
+    if (req.body.departs === "") {
+        delete(req.body.departs);
+    }
     // Create an in-memory Flight object (not saved in database yet)
     const flight = new Flight(req.body);
     // save object in our database

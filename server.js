@@ -6,6 +6,7 @@ var logger = require('morgan');
 // Define routes
 var indexRouter = require('./routes/index');
 var flightsRouter = require('./routes/flights');
+var destinationsRouter = require('./routes/destinations');
 
 // load the env
 require('dotenv').config();
@@ -28,6 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Mount routes
 app.use('/', indexRouter);
 app.use('/flights', flightsRouter);
+app.use('/', destinationsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
