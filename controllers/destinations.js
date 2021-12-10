@@ -9,7 +9,6 @@ function create (req,res) {
     Flight.findById(req.params.id, function (err, flight) { // ASYNCHRONOUS
         // Add destination to flight.destinations array
         flight.destinations.push(req.body);
-        console.log(req.body);
         // save the parent document
         flight.save(function (err) {
             // handle errors first

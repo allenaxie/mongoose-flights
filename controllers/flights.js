@@ -29,11 +29,16 @@ function create (req,res) {
 }
 
 function index (req,res) {
-    Flight.find({}, function(err,flights) {
+    // Access all flights objects
+    Flight.find(({}), function(err,flights) {
         if (err) {
             console.log(err);
             return res.redirect('/');
         }
+        // Sort by ascending order
+        flights.sort(function(a,b){
+            return (a.departs - b.departs)
+        });
         // render page
         res.render('flights/index',{ flights });
     })
