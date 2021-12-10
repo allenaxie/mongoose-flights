@@ -7,7 +7,13 @@ const destinationSchema = new Schema({
         type: String,
         enum: ['ICN','SFO','KUL','LAX','HKG'],
     },
-    arrival: Date,    
+    arrival: {
+        type: Date,
+        default: new Date(
+            new Date().setFullYear(
+              new Date().getFullYear() +1,
+            ))
+    },    
 },{
     timestamps: true
 });

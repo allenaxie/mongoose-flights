@@ -5,10 +5,18 @@ module.exports = {
 };
 
 function create (req,res) {
+    // Delete empty string if empty input
+    if (req.body.arrival === "") {
+        delete(req.body.arrival)
+    }
     // First find the flight we are adding a destination to
     Flight.findById(req.params.id, function (err, flight) { // ASYNCHRONOUS
         // Add destination to flight.destinations array
         flight.destinations.push(req.body);
+        // Sort array by arrival
+        flight.destinations.sort(function(a,b) {
+            return (a.arrival - b.arrival)
+        })
         // save the parent document
         flight.save(function (err) {
             // handle errors first
