@@ -39,6 +39,10 @@ function index (req,res) {
         flights.sort(function(a,b){
             return (a.departs - b.departs)
         });
+        // Red text if flight has already departed
+        if ((flights.departs - new Date()) > 0 ) {
+            
+        }
         // render page
         res.render('flights/index',{ flights });
     })

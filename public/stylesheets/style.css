@@ -5,4 +5,20 @@ body {
 
 a {
   color: #00B7FF;
+  margin: 10px;
+  font-size: 15px;
 }
+
+div {
+  margin: 10px;
+}
+
+.show-details-head {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+label {
+  margin: 5px;
+}
+
