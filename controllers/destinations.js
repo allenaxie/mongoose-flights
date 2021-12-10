@@ -13,10 +13,6 @@ function create (req,res) {
     Flight.findById(req.params.id, function (err, flight) { // ASYNCHRONOUS
         // Add destination to flight.destinations array
         flight.destinations.push(req.body);
-        // Sort array by arrival
-        flight.destinations.sort(function(a,b) {
-            return (a.arrival - b.arrival)
-        })
         // save the parent document
         flight.save(function (err) {
             // handle errors first

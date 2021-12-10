@@ -1,72 +1,79 @@
 <%- include('../partials/header') %>
-<body id="show">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <title>Mongoose Flights</title>
-</head>
-    <section>
-        <div class = "show-details-head">Airline:</div>
-        <div>
-            <%= flight.airline%>
-        </div >
-        <div class = "show-details-head">Airport:</div>
-        <div>
-            <%= flight.airport %>
-        </div>
-        <div class = "show-details-head">Flight No.:</div>
-        <div>
-            <%= flight.flightNo %>
-        </div>
-        <div class = "show-details-head">Departs:</div>
-        <div>
-            <%= flight.departs %>
-        </div>
-    </section>
 
-    <h2>Choose Destination</h2>
-    <form id="destination-form" method="POST" action="/flights/<%= flight._id%>/destinations">
-        <label>Airport:</label>
-        <select name="airport">
-            <option value="ICN" selected>ICN</option>
-            <option value="SFO">SFO</option>
-            <option value="KUL">KUL</option>
-            <option value="LAX">LAX</option>
-            <option value="HKG">HKG</option>
-        </select>
-        <label >Arrival:</label>
-        <input name="arrival" type="datetime-local">
-        <input type="submit" value="Choose Destination">
-    </form>
+    <body id="show">
 
-    <% if (flight.destinations.length) { %>
-        <table>
-            <thead>
-                <tr>
-                    <th class= "destHead">Date</th>
-                    <th class= "destHead">Airport</th>
-                    <th class= "destHead">Arrival</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% flight.destinations.forEach(function(d) { %>
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <link rel='stylesheet' href='/stylesheets/style.css' />
+            <title>Mongoose Flights</title>
+        </head>
+        <section>
+            <div class="show-details-head">Airline:</div>
+            <div>
+                <%= flight.airline%>
+            </div>
+            <div class="show-details-head">Airport:</div>
+            <div>
+                <%= flight.airport %>
+            </div>
+            <div class="show-details-head">Flight No.:</div>
+            <div>
+                <%= flight.flightNo %>
+            </div>
+            <div class="show-details-head">Departs:</div>
+            <div>
+                <%= flight.departs %>
+            </div>
+        </section>
+
+        <h2>Choose Destination</h2>
+        <form id="destination-form" method="POST" action="/flights/<%= flight._id%>/destinations">
+            <label>Airport:</label>
+            <select name="airport">
+                <option value="ICN" selected>ICN</option>
+                <option value="SFO">SFO</option>
+                <option value="KUL">KUL</option>
+                <option value="LAX">LAX</option>
+                <option value="HKG">HKG</option>
+            </select>
+            <label>Arrival:</label>
+            <input name="arrival" type="datetime-local">
+            <input type="submit" value="Choose Destination">
+        </form>
+
+        <% if (flight.destinations.length) { %>
+            <table>
+                <thead>
                     <tr>
-                        <td>
-                            <%= d.createdAt.toLocaleDateString() %>
-                        </td>
-                        <td>
-                            <%= d.airport %>
-                        </td>
-                        <td>
-                            <%= d.arrival %>
-                        </td>
+                        <th class="destHead">Date</th>
+                        <th class="destHead">Airport</th>
+                        <th class="destHead">Arrival</th>
                     </tr>
-                    <% }); %>
-            </tbody>
-        </table>
-        <% } else { %>
-            <h5>No Destinations Yet</h5>
-            <% } %>
-</body>
+                </thead>
+                <tbody>
+                    <!-- Sort array by arrival -->
+             <% flight.destinations.sort(function(a,b) { %>
+                <% return (a.arrival - b.arrival) %>
+                    <% }) %>
+                    <% flight.destinations.forEach(function(d) { %>
+                        
+                                    <tr>
+                                        <td>
+                                            <%= d.createdAt.toLocaleDateString() %>
+                                        </td>
+                                        <td>
+                                            <%= d.airport %>
+                                        </td>
+                                        <td>
+                                            <%= d.arrival %>
+                                        </td>
+                                    </tr>
+                                    <% }); %>
+                </tbody>
+            </table>
+            <% } else { %>
+                <h5>No Destinations Yet</h5>
+                <% } %>
+    </body>

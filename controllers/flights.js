@@ -35,10 +35,6 @@ function index (req,res) {
             console.log(err);
             return res.redirect('/');
         }
-        // Sort by ascending order
-        flights.sort(function(a,b){
-            return (a.departs - b.departs)
-        });
         // Red text if flight has already departed
         if ((flights.departs - new Date()) > 0 ) {
             
