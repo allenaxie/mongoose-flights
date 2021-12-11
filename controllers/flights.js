@@ -50,9 +50,9 @@ function index (req,res) {
 function show (req,res) {
     // Find object by ID
     Flight.findById(req.params.id, function (err, flight) {
-        Ticket.find({flight: flight._id}, function (err, tickets) {
+        Ticket.find({flight: flight._id}, function (err, ticket) {
             // show object
-            res.render('flights/show', { title: 'Flight Detail', flight, tickets })
+            res.render('flights/show', { title: 'Flight Detail', flight, ticket})
         })
     })
 }
