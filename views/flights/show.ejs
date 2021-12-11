@@ -78,14 +78,16 @@
                 <% } %>
 
                 <a id = "addTicket" href="/flights/<%= flight._id%>/tickets/new">Add ticket</a>
-                    <% if (flight.tickets.length) { %>
-                        <table>
+                <% if (tickets.length) { %>        
+                <table>
                             <thead>
                                 <tr>
                                     <th class="destHead">Seat</th>
                                     <th class="destHead">Price</th>
                                 </tr>
-                            </thead <% flight.tickets.forEach(function(t) { %>
+                            </thead> 
+                            
+                            <% tickets.forEach(function(t) { %>
                             <tbody>
                                 <tr>
                                     <td>
@@ -97,8 +99,9 @@
                                 </tr>
                                 <% }); %>
                             </tbody>
-                        </table>
                         <% } else { %>
-                            <h5>No Tickets Yet</h5>
-                            <% } %>
+                            <h5>No tickets yet</h5>
+                        <% } %>
+                        </table>
+                    
     </body>

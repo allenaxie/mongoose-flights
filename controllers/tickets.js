@@ -17,8 +17,6 @@ function newTicket (req,res) {
 function create (req,res) {
     // Find the flight we are adding the ticket to
     Flight.findById(req.params.id, function (err, flight) {
-        console.log(req.params.id)
-        // add flight to ticket.flight
         // Save the parent document
         flight.save(function (err) {
             // handle errors
