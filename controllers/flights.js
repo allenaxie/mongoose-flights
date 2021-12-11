@@ -12,7 +12,9 @@ function newFlight (req,res) {
 }
 
 function create (req,res) {
+    // if departs input is empty
     if (req.body.departs === "") {
+        // delete empty string so we can add default value
         delete(req.body.departs);
     }
     // Create an in-memory Flight object (not saved in database yet)

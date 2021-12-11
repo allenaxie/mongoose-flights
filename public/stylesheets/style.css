@@ -22,3 +22,7 @@ label {
   margin: 5px;
 }
 
+#addTicket {
+  margin-top: 35px;
+  display: flex;
+}

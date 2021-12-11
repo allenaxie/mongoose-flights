@@ -4,10 +4,10 @@ module.exports = {
     create,
 };
 
-function create (req,res) {
+function create(req, res) {
     // Delete empty string if empty input
     if (req.body.arrival === "") {
-        delete(req.body.arrival)
+        delete (req.body.arrival)
     }
     // First find the flight we are adding a destination to
     Flight.findById(req.params.id, function (err, flight) { // ASYNCHRONOUS
