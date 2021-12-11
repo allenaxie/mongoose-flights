@@ -17,20 +17,22 @@ function newTicket (req,res) {
 function create (req,res) {
     // Find the flight we are adding the ticket to
     Flight.findById(req.params.id, function (err, flight) {
-        Ticket.find({flight: flight._id}, function (err, ticket) {
+        // Ticket.find({flight: flight._id}, function (err, ticket) {
             // Add flight id to ticket.flight
-            ticket.flight = req.params.id;
-            ticket.push(req.body);
-            console.log(ticket.flight);
-            console.log(ticket);
-        })
-
-        // Save the parent document
-        flight.save(function (err) {
-            // handle errors
-            if (err) console.log(err);
-            // redirect to show page
-            res.redirect(`/flights/${flight._id}`);
-        })
+            req.body.flight = req.params.id;
+            // Add ticket data to ticket object
+            // ticket.push(req.body);
+            // console.log(ticket);
+            // Create an in-memory ticket object (not saved in database yet)
+            const ticket = new Ticket(req.body);
+            // Save object in our database
+            ticket.save(function (err) {
+                // handle errors
+                if (err) console.log(err);
+                // redirect to show page
+                res.redirect(`/flights/${flight._id}`);
+            })
+            // save ticket document
+        // })
     })
 }
