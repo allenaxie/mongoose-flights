@@ -7,32 +7,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheets/main.css">
+    <link rel="stylesheet" href="/stylesheets/flights/new.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>New flight</title>
+    <title>New Flight</title>
 </head>
 
 <body>
     <h2>Enter a New Flight</h2>
     <form action="/flights" method="POST">
-        <label>Airline:
-            <input type="text" name="airline">
-        </label><br>
-        <label>Airport:
-            <select name="airport">
-                <option value="SFO" selected>SFO</option>
-                <option value="LAX" >LAX</option>
-                <option value="SHA" >SHA</option>
-                <option value="BKK" >BKK</option>
-                <option value="SIN" >SIN</option>
-            </select>
-        </label><br>
-        <label>Flight Number:
-            <input type="text" name="flightNo">
-        </label><br>
-        <label>Departure date:
-            <input type="datetime-local" name="departs">
-        </label><br>
-        <input type="submit" value="Add Flight">
+        <div class="form-group">
+            <label>Airline:
+                <input class="form-control" type="text" name="airline">
+            </label><br>
+            <label>Airport:
+                <select class="form-select" name="airport">
+                    <option value="SFO" selected>SFO</option>
+                    <option value="LAX" >LAX</option>
+                    <option value="SHA" >SHA</option>
+                    <option value="BKK" >BKK</option>
+                    <option value="SIN" >SIN</option>
+                </select>
+            </label><br>
+            <label>Flight Number:
+                <input class="form-control" type="text" name="flightNo">
+            </label><br>
+            <label>Departure date:
+                <input class="form-control" type="datetime-local" name="departs">
+            </label><br>
+            <input class="submitBtn" type="submit" value="Add Flight">
+        </div>
     </form>
 </body>
 
