@@ -1,0 +1,47 @@
+body {
+    background: linear-gradient(90deg, #72a8c7 0%, #2b88df 120%);
+}
+
+body > div {
+    text-decoration: underline;
+    font-size: 35px;
+    margin-top: 15px;
+    display: flex;
+}
+
+label {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+form {
+    background: white;
+    display: flex;
+    flex-direction: column;
+    width: 25ch;
+    padding: 10px;
+}
+
+.seat-container {
+    display: flex;
+}
+
+#seat-input {
+    width: 40%;
+}
+
+#price-input {
+    width: 80px;
+}
+
+button {
+    width: 50%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.add-ticket-button {
+    display: flex;
+    justify-content: center;
+}
