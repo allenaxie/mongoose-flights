@@ -6,33 +6,34 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="/stylesheets/main.css">
-        <link href="https: //cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="/stylesheets/flights/show.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
         <title>Flight Details</title>
+        <div class="heading">Flight Details</div>
+        <table id="flight-details" class="table table-striped">
+            <tr>
+                <td>Airline:</td>
+                <td><%= flight.airline%></td>
+            </tr>
+            <tr>
+                <td>Airport:</td>
+                <td><%= flight.airport%></td>
+            </tr>
+            <tr>
+                <td>Flight No.:</td>
+                <td> <%= flight.flightNo%></td>
+            </tr>
+            <tr>
+                <td>Departs:</td>
+                <td><%= flight.departs%></td>
+            </tr>
+        </table>
 
-        <section>
-            <div class="show-details-head">Airline:</div>
-            <div>
-                <%= flight.airline%>
-            </div>
-            <div class="show-details-head">Airport:</div>
-            <div>
-                <%= flight.airport %>
-            </div>
-            <div class="show-details-head">Flight No.:</div>
-            <div>
-                <%= flight.flightNo %>
-            </div>
-            <div class="show-details-head">Departs:</div>
-            <div>
-                <%= flight.departs %>
-            </div>
-        </section>
-
-        <h2>Choose Destination</h2>
+        <div class="dest-heading">Destinations</div>
         <form id="destination-form" method="POST" action="/flights/<%= flight._id%>/destinations">
-            <label>Airport:</label>
+            <label id="airport-label">Airport:</label>
             <select name="airport">
                 <option value="ICN" selected>ICN</option>
                 <option value="SFO">SFO</option>
@@ -40,13 +41,13 @@
                 <option value="LAX">LAX</option>
                 <option value="HKG">HKG</option>
             </select>
-            <label>Arrival:</label>
+            <label id="arrival-label">Arrival:</label>
             <input name="arrival" type="datetime-local">
-            <input type="submit" value="Choose Destination">
+            <input type="submit" value="Select Destination">
         </form>
 
         <% if (flight.destinations.length) { %>
-            <table>
+            <table id="destinations-table" class="table table-striped">
                 <thead>
                     <tr>
                         <th class="destHead">Date</th>

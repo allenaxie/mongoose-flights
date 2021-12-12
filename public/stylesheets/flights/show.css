@@ -1,0 +1,31 @@
+body {
+    background: linear-gradient(90deg, #72a8c7 0%, #2b88df 120%);
+    display: flex;
+    flex-direction: column;
+}
+
+.heading {
+    font-size: 35px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-decoration: underline;
+}
+
+.table {
+    background: white;
+}
+
+.dest-heading {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-size: 35px;
+    text-decoration: underline;
+}
+
+#arrival-label {
+    margin-left: 10px;
+}
+
+#destinations-table {
+    margin-top: 10px;
+}
