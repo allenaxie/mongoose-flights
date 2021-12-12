@@ -20,9 +20,6 @@ function create (req,res) {
         // Ticket.find({flight: flight._id}, function (err, ticket) {
             // Add flight id to ticket.flight
             req.body.flight = req.params.id;
-            // Add ticket data to ticket object
-            // ticket.push(req.body);
-            // console.log(ticket);
             // Create an in-memory ticket object (not saved in database yet)
             const ticket = new Ticket(req.body);
             // Save object in our database

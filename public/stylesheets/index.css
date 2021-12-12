@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Marcellus&family=Permanent+Marker&family=Source+Code+Pro:wght@300&display=swap');
+
+body {
+    background-image:url("/images/home-page-bg.jpeg");
+    background-size: cover;
+    text-align: center;
+}
+
+.title {
+    font-size: 100px;
+    text-align: center;
+    font-family: "Permanent Marker";
+    margin-top: 100px;
+}
+
+.slogan {
+    text-align: center;
+    font-size: 40px;
+}
