@@ -80,30 +80,34 @@
                 <h5>No Destinations Yet</h5>
                 <% } %>
 
-                    <a id="addTicket" href="/flights/<%= flight._id%>/tickets/new">Add ticket</a>
-                    <% if (ticket.length) { %>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th class="destHead">Seat</th>
-                                    <th class="destHead">Price</th>
-                                </tr>
-                            </thead>
-                            <% ticket.forEach(function(t) { %>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <%= t.seat %>
-                                        </td>
-                                        <td>
-                                            <%= t.price %>
-                                        </td>
-                                    </tr>
-                                    <% }); %>
-                                </tbody>
-                                <% } else { %>
-                                    <h5>No tickets yet</h5>
-                                    <% } %>
-                        </table>
+                <div class="tickets-heading">Tickets</div>
+<div class="ticket-list-container">
+    <a id="add-ticket" href="/flights/<%= flight._id%>/tickets/new">Add ticket</a>
+    
+    <% if (ticket.length) { %>
+        <table class="tickets-table">
+            <thead>
+                <tr>
+                    <th class="destHead">Seat</th>
+                    <th class="destHead">Price</th>
+                </tr>
+            </thead>
+            <% ticket.forEach(function(t) { %>
+                <tbody>
+                    <tr>
+                        <td>
+                            <%= t.seat %>
+                        </td>
+                        <td>
+                            <%= t.price %>
+                        </td>
+                    </tr>
+                    <% }); %>
+                </tbody>
+                <% } else { %>
+                    <h5>No tickets yet</h5>
+                    <% } %>
+        </table>
+</div>
 
     </body>

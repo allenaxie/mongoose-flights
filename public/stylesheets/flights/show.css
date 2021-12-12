@@ -29,3 +29,19 @@ body {
 #destinations-table {
     margin-top: 10px;
 }
+
+.ticket-list-container {
+    background: white;
+    padding: 5px;
+}
+
+.tickets-heading {
+    font-size: 35px;
+    text-decoration: underline;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.tickets-table {
+    width: 200px;
+}
