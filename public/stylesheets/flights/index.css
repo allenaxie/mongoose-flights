@@ -1,4 +1,13 @@
+body {
+    background: linear-gradient(90deg, #72a8c7 0%, #2b88df 120%);
+    z-index: -1;
+}
+
 .flight-index-heading {
     margin-top: 20px;
     display: flex;
   }
+
+table {
+    background: white;
+}
